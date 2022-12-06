@@ -2,9 +2,9 @@
 # You can delete these comments, but do not change the name of this file
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
 
+import os
 import gspread
 from google.oauth2.service_account import Credentials
-import subprocess
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -65,7 +65,8 @@ def update_worksheet(data, worksheet):
     Receives a list of integers to be inserted into a worksheet.
     Update the relevant worksheet with the data provided.
     """
-    subprocess.call('reset')
+    print('\n' * 150)
+    os.system("cls" if os.name == "nt" else "clear")
 
     print(f"Updating {worksheet} worksheet...\n")
     worksheet_to_update = SHEET.worksheet(worksheet)
