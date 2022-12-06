@@ -4,7 +4,7 @@
 
 import gspread
 from google.oauth2.service_account import Credentials
-import os
+import subprocess
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -65,10 +65,7 @@ def update_worksheet(data, worksheet):
     Receives a list of integers to be inserted into a worksheet.
     Update the relevant worksheet with the data provided.
     """
-    def clear_console():
-        print('\n' * 150)
-        os.system('cls' if os.name in ('nt', 'dos') else 'clear')
-    clear_console()
+    subprocess.call('reset')
 
     print(f"Updating {worksheet} worksheet...\n")
     worksheet_to_update = SHEET.worksheet(worksheet)
